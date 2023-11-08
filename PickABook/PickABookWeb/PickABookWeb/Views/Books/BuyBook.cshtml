@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "BuyBook";
+}
+
+<style>
+    body {
+        background-image: url('/signupbackground.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .search-container {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .search-input {
+        width: 98%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .search-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+    .search-form {
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div class="search-container">
+        <form method="get" asp-controller="Books" asp-action="BuyBook" class="search-form">
+            <div class="form-group">
+                <input type="text" class="search-input" name="search" placeholder="Search for book">
+            </div>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+    <br />
+   
+    @if (Model != null)
+    {
+        <div class="row p-5">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4" style="padding-top:50px;">
+                    <div style="width: 430px; height: 430px">
+                        <div class="card mb-3" style="width: 200px; height: 200px;">
+                            <img src="~/images/@item.Image" class="card-img-top" alt="Book Image">
+                            <div class="card-body p-3" style="padding:10px">
+                                <a href="@Url.Action("BuyBookDetails", "Books", new { id = item.BookId })" class="btn btn-primary">Details</a>
+                                <a href="mailto:@item.defaultUser.Email" class="btn btn-warning">Contact Seller</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No books to display.</p>
+    }
+</body>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+
+
+    <title>PickABook</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PickABookWeb.styles.css" asp-append-version="true" />
+  
+    
+</head>
+<body>
+
+    @if (User.Identity.IsAuthenticated )
+    {
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-3 opacity-50 ">
+                <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" style="color:white" asp-action="Index"><img src="~/logo.jpg" width="210px" height="80px"/></a>
+                <button class="navbar-toggler" type="button" style="color:white;font-size:14px" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-start">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="color:white; font-size:20px;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="color:white; font-size:20px;" asp-area="" asp-controller="Books" asp-action="Index">My Books</a>
+                        </li>
+                         @if (User.Identity.Name == "adminX@gmail.com") @* <!-- Check if the user's username is "adminUser" --> *@
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" style="color:white; font-size:20px;" asp-area="" asp-controller="Admin" asp-action="Index">Admin Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" style="color:white; font-size:20px;" asp-area="" asp-controller="Admin" asp-action="Books">Manage Books</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                </div>
+                <partial name="_LoginPartial" />
+   </nav>
+        
+    }
+   
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <div class="footer" >
+        COPYRIGHT - 2023 SolvnX
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(window).on('beforeunload', function () {
+        $.ajax({
+            url: '/Account/Logout', // Change to your logout URL
+            type: 'POST',
+            async: false,
+        });
+    });
+</script>

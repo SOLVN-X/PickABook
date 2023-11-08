@@ -1,0 +1,47 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+ 
+    body {
+        background-size: contain; /* Adjust background size for better visibility on small screens */
+    }
+
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+    }
+
+    /* Define styles for specific elements if needed */
+
+    .footer {
+        background-color: black;
+        opacity: 50%;
+        color: white;
+        padding: 10px 0; /* Add padding for spacing */
+        text-align: center;
+        
+    }
+
+    h1 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 24px;
+    }
+
+    .header {
+        background-color: black;
+        opacity: 50%;
+        color: white;
+        padding: 10px 0; /* Add padding for spacing */
+        text-align: center;
+    }

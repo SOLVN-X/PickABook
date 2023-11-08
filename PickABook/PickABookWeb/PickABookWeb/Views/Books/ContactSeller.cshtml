@@ -1,0 +1,25 @@
+﻿
+@* <body>
+    <div class="container" style="background-image: url(' /mainbackground.jpg') ;background-size: 100% 100%;  background-repeat: no-repeat;background-attachment: fixed;">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNztHmb_5P_mGnWMVenKXxLeOYVizSESJLM2qVk6MjtfIXIw/viewform?embedded=true" width="640" height="686" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</div>
+</body> *@
+@{
+    ViewData["Title"] = "Contact Seller";
+}
+
+<body>
+    <div class="container">
+        <h2>Contact Seller</h2>
+        @if (!string.IsNullOrEmpty(ViewBag.SellerEmail))
+        {
+            <p>
+                <a href="mailto:@ViewBag.SellerEmail">Email the seller</a>
+            </p>
+        }
+        else
+        {
+            <p>Seller's email not available.</p>
+        }
+    </div>
+</body>

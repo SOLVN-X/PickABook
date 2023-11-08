@@ -1,0 +1,145 @@
+﻿@* 
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            background-image: url("mainbackground.jpg");
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Style for the container */
+        .container {
+            display: flex;
+            justify-content: center; /* Center the content horizontally */
+            align-items: center; /* Center the content vertically */
+            height: 100%;
+        }
+
+        .btn-darkred {
+            background-color: darkred;
+        }
+
+        /* Style text color to white */
+        .text-white {
+            color: white;
+        }
+
+        /* Style for larger buttons with left padding */
+        .btn-lg {
+            height: 100px;
+            width: 300px;
+            font-size: 24px;
+            /* Add left and right padding */
+            padding: 0 20px;
+        }
+
+        .centered-text {
+            text-align: center;
+            line-height: 100px;
+        }
+
+        /* Media query for smaller screens (e.g., mobile devices) */
+       
+
+            .container {
+                align-items: flex-start; /* Align content to the top for small screens */
+            }
+
+            .btn-lg {
+                width: 100%; /* Make the buttons full width */
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <button class="btn btn-lg btn-success btn-darkred text-white"><a href="/Books/BuyBook" style="color:white">BUY BOOK</a></button>
+                <button class="btn btn-lg btn-secondary btn-darkred text-white" style="margin-top: 10px;"><a href="/Books/Create" style="color:white">SELL BOOK</a></button>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+ *@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-image: url("mainbackground.jpg");
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        /* Style for larger buttons with left padding */
+        .btn-lg {
+            font-size: 24px;
+            padding: 10px 20px;
+        }
+
+        /* Style text color to white */
+        .text-white {
+            color: white;
+        }
+
+        /* Center the buttons within the viewport */
+        .centered-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Change button colors to burnt orange with white text */
+        .btn-custom {
+            background-color: #FFA500;
+            color: white;
+            border: 2px solid #FF8C00; /* Dark orange border */
+        }
+
+            /* Hover effect for burnt orange buttons */
+            .btn-custom:hover {
+                background-color: #FF8C00;
+            }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="centered-container text-center">
+                <a href="/Books/BuyBook" class="btn btn-lg btn-custom">BUY A BOOK</a>
+                <a href="/Books/Create" class="btn btn-lg btn-custom">SELL A BOOK</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap and jQuery JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

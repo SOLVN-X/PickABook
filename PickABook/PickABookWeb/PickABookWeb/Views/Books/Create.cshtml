@@ -1,0 +1,186 @@
+﻿@model PickABookWeb.bookviewsmodel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-image: url("/mainbackground.jpg");
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #account {
+            background-color: #d3d3d3;
+            max-width: 90%;
+            width: 1000px; /* Adjust the width to your preference */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin: 0 auto; /* This centers the form horizontally */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-floating {
+            margin: 10px;
+            position: relative;
+        }
+
+            .form-floating input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: darkred;
+            color: white;
+            border: 2px solid #FF8C00;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background-color: darkred;
+            }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: darkred;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <section id="account">
+            <form id="Create" method="post" enctype="multipart/form-data">
+                <h2>Fill in the Details of the Book</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title" type="text" class="form-control" aria-required="true" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <label asp-for="Author" class="form-label"></label>
+                    <input asp-for="Author" type="text" class="form-control" aria-required="true" />
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <label asp-for="ISBN" class="form-label"></label>
+                    <input asp-for="ISBN" type="text" form-control" aria-required="true" />
+
+                    <span asp-validation-for="ISBN" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <label asp-for="Publisher" class="form-label"></label>
+                    <input asp-for="Publisher" type="text" class="form-control" aria-required="true" />
+
+                    <span asp-validation-for="Publisher" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-floating">
+                            <label asp-for="Price" class="form-label"></label>
+                            <input asp-for="Price" min="c0" class="form-control" aria-required="true" />
+
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating">
+                            <label asp-for="Edition" class="form-label"></label>
+                            <input asp-for="Edition" min="0" class="form-control" aria-required="true" />
+
+                            <span asp-validation-for="Edition" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating">
+                            <label asp-for="Year" class="form-label"></label>
+                            <input asp-for="Year" min="1000" max="9999" class="form-control" aria-required="true" />
+
+                            <span asp-validation-for="Year" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <select asp-for="Condition" class="form-select form-control-lg" style="width:100%;height:4%" aria-required="true">
+                        <option value="">Select Condition</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Bad">Bad</option>
+                    </select>
+
+                    <span asp-validation-for="Condition" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating">
+                    <label asp-for="Description" class="form-label"></label>
+                    <input asp-for="Description" class="form-control" aria-required="false" />
+
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <label asp-for="Photo" class="form-label"></label>
+
+                    <!-- Add an input element for choosing or capturing an image with padding -->
+                    <input asp-for="Photo" type="file" class="form-control" accept="image/*" style="padding: 10px;" />
+
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="SellerId" class="control-label"></label>
+                    <select asp-for="SellerId" class="form-control" asp-items="ViewBag.SellerId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
